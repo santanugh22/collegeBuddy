@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "undefined/subscriptions/d7ad8766-8efe-42ed-a59a-bc30c610303c/resourceGroups/CollegeBuddy/providers/Microsoft.Web/sites/collegeBuddy",
+  "appService.deploySubpath": "."
+}

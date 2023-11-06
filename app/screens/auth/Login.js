@@ -7,6 +7,8 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 
 
+
+
 const {height,width}=Dimensions.get('screen')
 
 const Login = () => {
@@ -19,36 +21,33 @@ const Login = () => {
   
     
   },[])
+ 
+
+
+
+  
   return (
-    <SafeAreaView style={{flex:1}}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#36454f" }}>
       <ImageBackground
         source={require("../../assets/login-bg.jpg")}
         style={styles.topImageBackground}
         blurRadius={5}
       >
-
         {/* This is the Top Sections of the App */}
         <View style={styles.topSection}>
-          <Ionicons name="ios-compass-outline" size={50} color="black" />
+          {/* <Ionicons name="ios-compass-outline" size={50} color="black" /> */}
         </View>
         {/* Top Section ENDS */}
 
-
-
-
-
         {/* Middle Section containing Login */}
         <KeyboardAvoidingView style={styles.middleSection}>
-          <LoginContainer/>
-
+          <LoginContainer />
         </KeyboardAvoidingView>
         {/* MiddleSection END */}
 
         {/* Bottom Section */}
 
-        <View style={styles.bottomSection}>
-
-        </View>
+        <View style={styles.bottomSection}></View>
       </ImageBackground>
     </SafeAreaView>
   );
@@ -67,26 +66,29 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 2,
     shadowOffset: {
-      height: 1,
-      width: 1,
+      height: 0,
+      width: 0,
     },
     justifyContent: "center",
     alignItems: "center",
+    marginTop:30
   },
   middleSection: {
-    height: height*0.45,
+    height: height*0.4,
     width: 0.95 * width,
     backgroundColor: "#F8F8FF",
     alignSelf: "center",
     marginTop: 12,
     borderRadius: 12,
     shadowColor: "#fff",
-    shadowRadius: 5,
+    shadowRadius: 2,
     shadowOffset: {
-      height: 2,
-      width: 2,
+      height: 0,
+      width: 0,
     },
     shadowOpacity: 0.6,
+
+
   },
   bottomSection: {
     height: height / 5,
@@ -95,6 +97,9 @@ const styles = StyleSheet.create({
     marginTop: 20,
     alignSelf: "center",
     borderRadius: 12,
+
+
+
   },
 });
 
@@ -177,11 +182,11 @@ function LoginContainer(){
           placeholderTextColor={"black"}
         />
       </View>
-      <View style={{ marginTop: 50, alignSelf: "center" }}>
+      <View style={{ marginTop: 30, alignSelf: "center" }}>
         <Pressable>
           <View
             style={{
-              height: 90,
+              height: 70,
               width: 300,
               backgroundColor: "#6495ED",
               justifyContent: "center",
@@ -194,8 +199,8 @@ function LoginContainer(){
               },
               shadowOpacity: 0.8,
               shadowRadius: 5,
-              borderColor: "black",
-              borderWidth:1
+
+
             }}
           >
             <Text style={{ fontSize: 30, fontWeight: 500, color: "#F0F8FF" }}>
@@ -207,3 +212,4 @@ function LoginContainer(){
     </View>
   );
 }
+
