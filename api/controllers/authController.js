@@ -49,3 +49,30 @@ export const registerController = async (req, res) => {
     res.status(403).json(error);
   }
 };
+
+
+
+export const updatePassword=async(req,res)=>{
+  try {
+    // check if the user actually exist 
+    const {username,password,newpassword}=req.body
+    const user=await pool.query('SELECT username FROM users WHERE username=$1 AND password=$2',[username,password])
+    if(user.rows[0]){
+      const updatePass=await pool.query('UPDATE users SET password=$1 WHERE username=$2 AND password=$3 RETURNING *',[newpassword,username,password])
+      if(updatePass.rows[0]){
+        res.status(200).json("Success")
+      }else{
+        res.status(300).json("Failed")
+      }
+
+    }else{
+      res.status(403).json("U are not allowed to do this")
+    }
+
+
+
+    
+  } catch (error) {
+    
+  }
+}
