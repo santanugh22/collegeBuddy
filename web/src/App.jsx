@@ -1,10 +1,12 @@
-import WorkInProgress from "./pages/WorkInProgress";
-import "./App.css";
+
+
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   return (
     <>
-      <WorkInProgress />
+    <LandingPage/>
+
     </>
   );
 }
