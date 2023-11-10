@@ -2,12 +2,13 @@ import styled from "styled-components";
 import Logo from "/logo.png";
 import HeroBackground from "/friends.svg";
 import { useState } from "react";
-// import { useState } from "react";
 import LoginPage from "./LoginPage";
 import RegisterPage from "./RegisterPage";
+import TeamWork from "/Invite_friends.svg";
+import Invite_Friends from '/Team_work.svg'
 
 const LandingPage = () => {
-  const [selectedPage,setSelectedPage]=useState(0)
+  const [selectedPage, setSelectedPage] = useState(0);
   return (
     <>
       <Header>
@@ -19,7 +20,6 @@ const LandingPage = () => {
       </Header>
 
       <HeroSection>
-       
         {selectedPage == 0 ? (
           <InitialContainer>
             <HeroMainText>Lorem Ipsum Dolors !</HeroMainText>
@@ -33,13 +33,40 @@ const LandingPage = () => {
               Login / Register
             </LoginRegisterButton>
           </InitialContainer>
-        ) : selectedPage==1?(
+        ) : selectedPage == 1 ? (
           <LoginPage
             selectedPage={selectedPage}
             setSelectedPage={setSelectedPage}
-          />):<RegisterPage setSelectedPage={setSelectedPage}/>
-        }
+          />
+        ) : (
+          <RegisterPage setSelectedPage={setSelectedPage} />
+        )}
       </HeroSection>
+      <MiddleSection>
+        <MiddleSectionImage src={TeamWork} />
+
+        <MiddleSectionTextContainer>
+          <MiddleSectionMainText>
+            Create an invite place where you belong
+          </MiddleSectionMainText>
+          <MiddleSectionSubText>
+            Lorem ipsum dolor sit amet consectetur. Aliquet pretium eget a elit
+            ut cum. Tellus nisi quisque dignissim egestas. Amet lacus{" "}
+          </MiddleSectionSubText>
+        </MiddleSectionTextContainer>
+      </MiddleSection>
+      <BottomSection>
+        <MiddleSectionTextContainer>
+          <MiddleSectionMainText>
+            Create an invite place where you belong
+          </MiddleSectionMainText>
+          <MiddleSectionSubText>
+            Lorem ipsum dolor sit amet consectetur. Aliquet pretium eget a elit
+            ut cum. Tellus nisi quisque dignissim egestas. Amet lacus{" "}
+          </MiddleSectionSubText>
+        </MiddleSectionTextContainer>
+        <MiddleSectionImage src={Invite_Friends} />
+      </BottomSection>
     </>
   );
 };
@@ -99,7 +126,6 @@ const LoginRegisterButton = styled.button`
   border: none;
   margin: 120px 472px 0px 472px;
   cursor: pointer;
-
 `;
 
 const Navbar = styled.div`
@@ -121,14 +147,9 @@ const GuideBook = styled.div`
   width: 70px;
 `;
 
-const InitialContainer=styled.div`
-margin-top: 120px;
-
-
-
-
-
-`
+const InitialContainer = styled.div`
+  margin-top: 120px;
+`;
 
 const HeroSecondaryText = styled.p`
   width: 815px;
@@ -140,6 +161,50 @@ const HeroSecondaryText = styled.p`
   font-weight: 400;
   line-height: normal;
   padding: 0px 234px;
+`;
+const MiddleSection = styled.div`
+  width: 100%;
+  height: 665px;
+  background: #fff;
+  display: flex;
+`;
+
+const MiddleSectionImage = styled.img`
+  height: 450px;
+
+  margin: 50px 0px 0px 132px;
+`;
+
+const MiddleSectionMainText = styled.p`
+  color: #23272a;
+  width: 400px;
+  font-family: Segoe UI;
+  font-size: 56.659px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+`;
+
+const MiddleSectionSubText = styled.p`
+  color: #23272a;
+  font-family: Segoe UI;
+  font-size: 25.182px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 554px;
+  margin-top: 10px;
+`;
+
+const MiddleSectionTextContainer = styled.div`
+  margin: 50px 70px 0px 100px;
+`;
+
+const BottomSection = styled.div`
+  width: 100%;
+  height: 665px;
+  background: #f6f6f6;
+  display: flex;
 `;
 
 export default LandingPage;
