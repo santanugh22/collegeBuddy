@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Logo from "../assets/Logo.png";
-import HeroBackground from "../assets/friends.svg";
+import Logo from "/logo.png";
+import HeroBackground from "/friends.svg";
 import { useState } from "react";
 // import { useState } from "react";
 import LoginPage from "./LoginPage";
