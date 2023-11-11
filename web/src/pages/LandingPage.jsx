@@ -208,3 +208,14 @@ const BottomSection = styled.div`
 `;
 
 export default LandingPage;
+import {test,describe,expect} from 'vitest'
+
+
+
+
+describe('Testing Buttons',()=>{
+  test('Hello',()=>{
+    expect(2+2).toBe(4)
+  })
+
+})
