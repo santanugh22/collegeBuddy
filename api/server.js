@@ -29,5 +29,5 @@ console.log(text.readResult.content)
 
 app.listen(3000,()=>{
     console.log("The server is running in the front")
-    imageApiTest()
+
 })

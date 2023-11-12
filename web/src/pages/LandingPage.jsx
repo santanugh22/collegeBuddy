@@ -7,7 +7,7 @@ import RegisterPage from "./RegisterPage";
 import TeamWork from "/Invite_friends.svg";
 import Invite_Friends from '/Team_work.svg'
 
-const LandingPage = () => {
+const LandingPage = ({setLoggedIn}) => {
   const [selectedPage, setSelectedPage] = useState(0);
   return (
     <>
@@ -37,6 +37,7 @@ const LandingPage = () => {
           <LoginPage
             selectedPage={selectedPage}
             setSelectedPage={setSelectedPage}
+            setLoggedIn={setLoggedIn}
           />
         ) : (
           <RegisterPage setSelectedPage={setSelectedPage} />
@@ -91,6 +92,8 @@ const HeroSection = styled.div`
   height: 665px;
   width: 100%;
   background-image: url(${HeroBackground});
+  background-size: 100% 100%;
+
   background-repeat: no-repeat;
   background-position: center;
   padding: 10px;
@@ -111,6 +114,10 @@ const HeroMainText = styled.h1`
   margin-top: 10px;
   padding: 0px 234px;
   text-align: center;
+  @media screen and (max-width: 480px){
+    font-size: small;
+    
+  }
 `;
 
 const LoginRegisterButton = styled.button`
@@ -167,12 +174,17 @@ const MiddleSection = styled.div`
   height: 665px;
   background: #fff;
   display: flex;
+  @media (max-width: 729px) {
+    width: 90%;
+
+    
+  }
 `;
 
 const MiddleSectionImage = styled.img`
   height: 450px;
 
-  margin: 50px 0px 0px 132px;
+  margin: 12% 0%;
 `;
 
 const MiddleSectionMainText = styled.p`
@@ -183,6 +195,8 @@ const MiddleSectionMainText = styled.p`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+
+  
 `;
 
 const MiddleSectionSubText = styled.p`

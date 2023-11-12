@@ -9,9 +9,13 @@ const LoginPage = (props) => {
       </LoginSecondaryHeader>
       <InputField placeholder="Email" />
       <InputField placeholder="Password" />
-      <LoginButton>Sign in</LoginButton>
+      <LoginButton onClick={()=>props.setLoggedIn(true)}>Sign in</LoginButton>
       <ButtomText>
-        Don`t have an account ? <SignupText onClick={()=>props.setSelectedPage(2)}>Signup</SignupText>
+        Don`t have an account ? <SignupText onClick={()=>{props.setSelectedPage(2)
+       
+      }
+        
+        }>Signup</SignupText>
       </ButtomText>
     </Container>
   );
@@ -19,12 +23,19 @@ const LoginPage = (props) => {
 export default LoginPage;
 
 const Container = styled.div`
-  width: 455px;
-  height: 463px;
+  width: 33%;
+  height: 66%;
   flex-shrink: 0;
   border-radius: 32px;
   background: var(--Form-Bg, #f6fbf9);
   margin: 96px 412px;
+  display: flex;
+  flex-direction: column;
+  @media (max-width: 729px) {
+    width: 90%;
+    
+  }
+
 `;
 
 const LoginHeaderText = styled.p`
@@ -47,22 +58,26 @@ const LoginSecondaryHeader = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 19.5px; /* 130% */
-  margin: 0px 74px 0px 73px;
+  margin: 0% 15%;
+  @media(max-width: 729px) {
+    font-size: medium;
+    
+  }
 `;
 
 const InputField = styled.input`
-  width: 375px;
-  height: 55px;
+  width: 70%;
+  height: 10%;
   flex-shrink: 0;
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   background: #fff;
-  margin: 32px 41px 0px 39px;
+  margin: 3% 15%;
   padding: 0px 0px 0px 12px;
 `;
 
 const LoginButton = styled.button`
-  width: 255px;
+  width: 35%;
   height: 59px;
   flex-shrink: 0;
   border-radius: 15px;
@@ -75,11 +90,20 @@ const LoginButton = styled.button`
   font-style: normal;
   font-weight: 700;
   line-height: 28.6px; /* 130% */
-  margin: 33px 100px;
+  margin: 5% 25%;
   cursor: pointer;
+  &:hover{
+    background-color: #999ff4;
+  }
+  @media(max-width:729px){
+    font-size: 12px;
+    width: 35%;
+    height: 15%;
+    margin: 5% 30%;
+  }
 `;
 
-const ButtomText = styled.p`
+const ButtomText = styled.h1`
   color: var(--Paragraph, #32403b);
   text-align: center;
   font-family: Segoe UI;
@@ -89,7 +113,7 @@ const ButtomText = styled.p`
   line-height: 18.2px; /* 130% */
 `;
 
-const SignupText = styled(ButtomText)`
+const SignupText = styled.p`
   color: #999fd4;
   font-family: Segoe UI;
   font-size: 14px;
