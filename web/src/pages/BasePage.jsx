@@ -20,18 +20,20 @@ const BasePage = ({ loggedIn, setLoggedIn }) => {
 
           <Wrapper>
             <TopNavBar />
-            <Routes>
-              <Route path="/">
-                <Route index element={<Home />}></Route>
-                <Route path=":id" element={<Post />}></Route>
-                <Route path="/studyzone">
-                  <Route index element={<StudyZone />}></Route>
+            <PageArea>
+              <Routes>
+                <Route path="/">
+                  <Route index element={<Home />}></Route>
+                  <Route path=":id" element={<Post />}></Route>
+                  <Route path="/studyzone">
+                    <Route index element={<StudyZone />}></Route>
+                  </Route>
+                  <Route path="/classroom">
+                    <Route index element={<Classroom />}></Route>
+                  </Route>
                 </Route>
-                <Route path="/classroom">
-                  <Route index element={<Classroom />}></Route>
-                </Route>
-              </Route>
-            </Routes>
+              </Routes>
+            </PageArea>
           </Wrapper>
           <SideNav setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
         </Container>
@@ -50,7 +52,17 @@ const Wrapper = styled.div`
 
   right: 0;
   left: 0;
+  background-color: aliceblue;
+  flex-direction: column;
 
 
 
 `;
+
+const PageArea=styled.div`
+margin-top: 7rem;
+z-index: 100;
+
+
+
+`

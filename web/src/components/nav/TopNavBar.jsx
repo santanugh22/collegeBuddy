@@ -14,12 +14,21 @@ const TopNavBar = () => {
 const Container=styled.div`
 height: 7rem;
 display: flex;
-width: 50rem;
+width: 52.3rem;
 position: sticky;
 top: 0;
 
+
+align-self: center;
+z-index: 100;
 justify-content: center;
 align-items: center;
+background-color: aqua;
+
+
+
+
+
 
 `
 
