@@ -10,8 +10,16 @@ import Classroom from "./Classroom";
 import SideNav from "../components/nav/SideNav";
 import TopNavBar from "../components/nav/TopNavBar";
 
+
+
+
+
+
+
 const BasePage = ({ loggedIn, setLoggedIn }) => {
   const [darkmode, setDarkMode] = useState(false);
+
+
   return (
     <BrowserRouter>
       <ThemeProvider theme={darkmode ? DarkTheme : LightTheme}>
