@@ -1,8 +1,9 @@
 import express from 'express'
 import authRoute from './routes/authRoute.js'
 import cors from 'cors'
-const PORT=1000
+import 'dotenv'
 
+const PORT=process.env.PORT || 3000
 const app=express()
 
 app.use(express.json())
