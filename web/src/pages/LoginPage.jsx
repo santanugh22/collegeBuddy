@@ -60,7 +60,8 @@ const LoginSecondaryHeader = styled.p`
   line-height: 19.5px; /* 130% */
   margin: 0% 15%;
   @media(max-width: 729px) {
-    font-size: medium;
+    font-size: 0.8em;
+    width: 20em;
     
   }
 `;
@@ -107,18 +108,18 @@ const ButtomText = styled.h1`
   color: var(--Paragraph, #32403b);
   text-align: center;
   font-family: Segoe UI;
-  font-size: 14px;
+  font-size: 0.8em;
   font-style: normal;
   font-weight: 400;
-  line-height: 18.2px; /* 130% */
+  line-height: 1em; /* 130% */
 `;
 
 const SignupText = styled.p`
   color: #999fd4;
   font-family: Segoe UI;
-  font-size: 14px;
+  font-size: 1em;
   font-style: normal;
   font-weight: 400;
-  line-height: 18.2px;
+  line-height: 1em;
   cursor: pointer;
 `;

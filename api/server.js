@@ -1,33 +1,25 @@
 import express from 'express'
 import authRoute from './routes/authRoute.js'
+import serverless from 'serverless-http'
+import cors from 'cors'
 
-const app=express()
+const api=express()
 
-app.use(express.json())
+api.use(express.json())
+api.use(cors)
 
-app.use('/api',authRoute)
+api.use('/api/',authRoute)
 
 
-
-const imageApiTest=async()=>{
-    const url =
-      "https://collegebuddy.cognitiveservices.azure.com/computervision/imageanalysis:analyze?features=caption,read&model-version=latest&language=en&api-version=2023-02-01-preview";
-    const data = {
-      url: "https://management.ind.in/img/j/Question-paper-of-IIT-Delhi-1.jpg",
-    };
-    const res=await fetch(url,{method:'POST',headers:{
-        "Content-Type":"application/json",
-        "Ocp-Apim-Subscription-Key":"0ee75f5a73ff4d15a925105e126941fd"
-    },
-    body:JSON.stringify(data)
+app.get('/',(req,res)=>{
+  res.send("You are good to go ")
 })
 
-const text=await res.json()
 
-console.log(text.readResult.content)
-}
 
-app.listen(3000,()=>{
-    console.log("The server is running in the front")
 
-})
+
+
+
+export const handler=serverless(app)
+

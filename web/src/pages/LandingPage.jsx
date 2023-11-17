@@ -75,10 +75,10 @@ const LandingPage = ({setLoggedIn}) => {
 const Header = styled.div`
   display: flex;
 
-  height: 78px;
+  height: 4.1em;
   width: 100%;
   background-color: #fff;
-  border-bottom: 2px solid #000;
+  border-bottom:0.1em solid #000;
 
   justify-content: center;
   position: fixed;
@@ -89,7 +89,7 @@ const HeroSection = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #999fd4;
-  height: 665px;
+  height: 40em;
   width: 100%;
   background-image: url(${HeroBackground});
   background-size: 100% 100%;
@@ -101,21 +101,24 @@ const HeroSection = styled.div`
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 
   align-items: center;
+
 `;
 
 const HeroMainText = styled.h1`
   color: #fff;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-family: Segoe UI;
-  font-size: 70px;
+  font-size: 4em;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin-top: 10px;
-  padding: 0px 234px;
+  margin-top: 0.01em;
+  line-height: 1em;
+
   text-align: center;
-  @media screen and (max-width: 480px){
-    font-size: small;
+  @media  (max-width: 729px){
+    font-size: 2em;
+
     
   }
 `;
@@ -159,42 +162,63 @@ const InitialContainer = styled.div`
 `;
 
 const HeroSecondaryText = styled.p`
-  width: 815px;
+  width: 40em;
   color: #fff;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-family: Segoe UI;
-  font-size: 22px;
+  font-size: 1.2em;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
-  padding: 0px 234px;
+
+  text-align: center;
+  padding: 1em 10em;
+
+  @media (max-width: 729px) {
+    font-size: 1.5em;
+    width: 20em;
+    text-align: center;
+    visibility: hidden;
+  }
 `;
 const MiddleSection = styled.div`
   width: 100%;
   height: 665px;
   background: #fff;
   display: flex;
+  align-items: center;
+
   @media (max-width: 729px) {
-    width: 90%;
+    display: flex;
+    flex-direction:column ;
+
 
     
   }
 `;
 
 const MiddleSectionImage = styled.img`
-  height: 450px;
+  height: 20em;
 
-  margin: 12% 0%;
+  margin: 2em 4em;
 `;
 
 const MiddleSectionMainText = styled.p`
   color: #23272a;
-  width: 400px;
+  width: 10em;
   font-family: Segoe UI;
-  font-size: 56.659px;
-  font-style: normal;
+  font-size: 3em;
+
   font-weight: 700;
-  line-height: normal;
+  margin: 2em 4em;
+
+
+
+  @media(max-width: 729px) {
+    font-size: 1em;
+
+
+    
+  }
 
   
 `;
@@ -206,12 +230,16 @@ const MiddleSectionSubText = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  width: 554px;
-  margin-top: 10px;
+  width: 30em;
+  margin: 2em 3em;
+
+  @media (max-width: 729px) {
+    font-size: 0.5em;
+  }
 `;
 
 const MiddleSectionTextContainer = styled.div`
-  margin: 50px 70px 0px 100px;
+  margin: 1em 1.2em 0em 2em;
 `;
 
 const BottomSection = styled.div`
@@ -219,6 +247,10 @@ const BottomSection = styled.div`
   height: 665px;
   background: #f6f6f6;
   display: flex;
+  @media (max-width: 729px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export default LandingPage;

@@ -9,7 +9,7 @@ import { AntDesign } from "@expo/vector-icons";
 
 
 
-const {height,width}=Dimensions.get('screen')
+const {height:HEIGHT,width:WIDTH}=Dimensions.get('screen')
 
 const Login = () => {
   const navigation=useNavigation()
@@ -55,12 +55,12 @@ const Login = () => {
 export default Login
 const styles = StyleSheet.create({
   topImageBackground: {
-    height: height,
-    width: width,
+    height: HEIGHT,
+    width: WIDTH,
     objectFit: "cover",
   },
   topSection: {
-    height: 55,
+    height: WIDTH*0.2,
     zIndex: 999,
     shadowColor: "#fff",
     shadowOpacity: 0.4,
@@ -74,8 +74,8 @@ const styles = StyleSheet.create({
     marginTop:30
   },
   middleSection: {
-    height: height*0.4,
-    width: 0.95 * width,
+    height: HEIGHT*0.4,
+    width: 0.5 * WIDTH,
     backgroundColor: "#F8F8FF",
     alignSelf: "center",
     marginTop: 12,
@@ -91,8 +91,8 @@ const styles = StyleSheet.create({
 
   },
   bottomSection: {
-    height: height / 5,
-    width: "95%",
+    height: HEIGHT / 5,
+    width: WIDTH*0.7,
     backgroundColor: "#F0F8FF",
     marginTop: 20,
     alignSelf: "center",
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
 
 function LoginContainer(){
   return (
-    <View style={{ flex: 1, gap: 20 }}>
+    <View style={{ flex: 1, gap: 20 ,width:0.7*WIDTH}}>
       <View
         style={{
           flexDirection: "row",
@@ -141,7 +141,7 @@ function LoginContainer(){
           placeholder="Email"
           style={{
             height: 50,
-            width: width * 0.8,
+            width: WIDTH * 0.5,
             borderRadius: 2,
             borderColor: "grey",
             borderWidth: 2,
@@ -170,7 +170,7 @@ function LoginContainer(){
           placeholder="Password"
           style={{
             height: 50,
-            width: width * 0.8,
+            width: WIDTH * 0.8,
             borderRadius: 2,
             borderColor: "grey",
             borderWidth: 2,
