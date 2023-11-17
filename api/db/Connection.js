@@ -1,14 +1,19 @@
 import pg from "pg";
-import "dotenv";
+import dotenv from "dotenv";
+dotenv.config();
 
-// ("postgres://taqjtfch:WOdI64u6AeTTsDlS49o6qHKX8vVmw2Lh@rain.db.elephantsql.com/taqjtfch");
 
-var pool = new pg.Pool({
-  host: process.env.DB_HOST,
-  user: "taqjtfch",
-  database: "taqjtfch",
-  password: "WOdI64u6AeTTsDlS49o6qHKX8vVmw2Lh",
-});
 
+var pool = new pg.Pool(
+  {
+    host:process.env.DB_HOST,
+    user:process.env.DB_USER,
+    database:process.env.DB_NAME,
+    password:process.env.DB_PASSWORD,
+    ssl:true
+
+  }
+
+);
 
 export default pool;

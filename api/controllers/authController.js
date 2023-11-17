@@ -81,7 +81,7 @@ export const allUsers=('/',async(req,res)=>{
   try {
     const users=await pool.query(`SELECT * FROM users_basic`)
     
-    res.status(200).json("Hello")
+    res.status(200).json(users)
     
   } catch (error) {
     console.log(error)
