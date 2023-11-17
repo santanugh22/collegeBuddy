@@ -3,12 +3,12 @@ import authRoute from './routes/authRoute.js'
 import serverless from 'serverless-http'
 import cors from 'cors'
 
-const api=express()
+const app=express()
 
-api.use(express.json())
-api.use(cors)
+app.use(express.json())
+app.use(cors)
 
-api.use('/api/',authRoute)
+app.use('/api/',authRoute)
 
 
 app.get('/',(req,res)=>{
