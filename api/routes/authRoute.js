@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { emailIdVerifier } from "../utils/RegexEmail.js";
+
 import { registerController ,loginController,updatePassword,allUsers} from "../controllers/authController.js";
 const router = Router();
 

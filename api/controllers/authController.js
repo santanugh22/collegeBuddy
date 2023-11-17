@@ -79,9 +79,9 @@ export const updatePassword=async(req,res)=>{
 
 export const allUsers=('/',async(req,res)=>{
   try {
-    const users=await pool.query(`SELECT * FROM users2`)
-    const resp=users.rows[0]
-    res.status(200).json(resp)
+    const users=await pool.query(`SELECT * FROM users_basic`)
+    
+    res.status(200).json("Hello")
     
   } catch (error) {
     console.log(error)
