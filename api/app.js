@@ -1,7 +1,7 @@
 import express from 'express'
 import authRoute from './routes/authRoute.js'
-import serverless from 'serverless-http'
 import cors from 'cors'
+const PORT=3000
 
 const app=express()
 
@@ -15,11 +15,13 @@ app.get('/',(req,res)=>{
   res.send("You are good to go ")
 })
 
+app.listen(PORT,()=>{
+  console.log(`Server is running on ${PORT}`)
+})
 
 
 
 
 
 
-export const handler=serverless(app)
 
