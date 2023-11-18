@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react';
 import styled from "styled-components";
-import { TesturlLogin } from './constants';
+
 const LoginPage = (props) => {
    document.title = "CollegeBuddy | Login";
    const [email,setEmail]=useState('')
@@ -9,7 +9,7 @@ const LoginPage = (props) => {
 
    async function userLoggin(){
     try {
-          const url = TesturlLogin;
+          const url = "https://cbuddy.onrender.com/api/auth/login";
           const payload = { email, password };
           const res = await axios.post(url, payload);
           if (res.data) {

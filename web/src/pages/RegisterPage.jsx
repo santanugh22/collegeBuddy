@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState } from "react";
 import styled from "styled-components";
-import { TesturlRegister } from './constants';
+
 
 
 
@@ -17,7 +17,7 @@ const RegisterPage = (props) => {
     async function RegisterUser(){
     
       try {
-          const url =  TesturlRegister;
+          const url = "https://cbuddy.onrender.com/api/auth/register";
           const payload = {
             first_name:firstName,
             last_name:lastName,

@@ -5,12 +5,12 @@ import LandingPage from "./pages/LandingPage";
 import BasePage from "./pages/BasePage";
 import { ThemeProvider } from "styled-components";
 import {DarkTheme,LightTheme} from './utils/GlobalTheme'
-import { TesturlVerify } from "./pages/constants";
+
 
 function App() {
   function checkLogin(){
     if(localStorage.getItem("token")){
-      const url =TesturlVerify ;
+      const url = "https://cbuddy.onrender.com/api/auth/auth-verify" ;
       const res=axios.post(url,{
         "token":localStorage.getItem("token")
       })
