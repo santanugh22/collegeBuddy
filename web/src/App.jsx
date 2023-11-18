@@ -8,6 +8,8 @@ import {DarkTheme,LightTheme} from './utils/GlobalTheme'
 
 
 function App() {
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [darkMode, setDarkMode] = useState(false);
   function checkLogin(){
     if(localStorage.getItem("token")){
       const url = "https://cbuddy.onrender.com/api/auth/auth-verify" ;
@@ -30,9 +32,8 @@ function App() {
     checkLogin()
 
 
-  },[])
-  const [loggedIn,setLoggedIn]=useState(false)
-  const [darkMode,setDarkMode]=useState(false)
+  },[loggedIn])
+
   return (
     <>
       <ThemeProvider theme={darkMode?DarkTheme:LightTheme}>

@@ -1,6 +1,15 @@
+import styled from 'styled-components'
 const Profile = () => {
   return (
-    <div>Profile</div>
+    <Container>
+      
+    </Container>
   )
 }
 export default Profile
+
+
+
+const Container=styled.div`
+
+`
