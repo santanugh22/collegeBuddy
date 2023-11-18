@@ -4,7 +4,7 @@ import { LightTheme, DarkTheme } from "../utils/GlobalTheme";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Home from "./Home";
-import Post from "./Post";
+import Post from "./PostCard";
 import StudyZone from "./StudyZone";
 import Classroom from "./Classroom";
 import SideNav from "../components/nav/SideNav";
