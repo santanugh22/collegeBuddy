@@ -9,6 +9,7 @@ import StudyZone from "./StudyZone";
 import Classroom from "./Classroom";
 import SideNav from "../components/nav/SideNav";
 import TopNavBar from "../components/nav/TopNavBar";
+import Profile from "./Profile";
 
 
 
@@ -24,7 +25,9 @@ const BasePage = ({ loggedIn, setLoggedIn }) => {
     <BrowserRouter>
       <ThemeProvider theme={darkmode ? DarkTheme : LightTheme}>
         <Container>
-          <Menu setDarkMode={setDarkMode} />
+          <MenuContainer>
+            <Menu setDarkMode={setDarkMode} />
+          </MenuContainer>
 
           <Wrapper>
             <TopNavBar />
@@ -39,11 +42,17 @@ const BasePage = ({ loggedIn, setLoggedIn }) => {
                   <Route path="/classroom">
                     <Route index element={<Classroom />}></Route>
                   </Route>
+                  <Route path="/profile">
+                    <Route index element={<Profile />}></Route>
+                  </Route>
                 </Route>
               </Routes>
             </PageArea>
           </Wrapper>
-          <SideNav setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
+          <SideMenuContainer>
+               <SideNav setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
+          </SideMenuContainer>
+       
         </Container>
       </ThemeProvider>
     </BrowserRouter>
@@ -55,21 +64,33 @@ const Container = styled.div`
   display: flex;
 `;
 
+const MenuContainer=styled.div`
+width: 18rem;
+
+`
+
+const SideMenuContainer = styled.div`
+  width: 18rem;
+`;
+
 const Wrapper = styled.div`
-  flex: 6;
+
 
   right: 0;
   left: 0;
-  background-color: aliceblue;
+  width: 52.2em;
+
   flex-direction: column;
+  margin-top:6em ;
 
 
 
 `;
 
 const PageArea=styled.div`
-margin-top: 7rem;
-z-index: 100;
+margin-top: 1rem;
+background-color: azure;
+
 
 
 

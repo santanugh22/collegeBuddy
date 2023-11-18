@@ -12,18 +12,22 @@ const TopNavBar = () => {
 
 
 const Container=styled.div`
-height: 7rem;
+
+height: 6rem;
 display: flex;
-width: 52.3rem;
-position: sticky;
-top: 0;
+width: 53em;
+position: fixed;
+top: 0em;
 
 
 align-self: center;
-z-index: 100;
+
 justify-content: center;
 align-items: center;
-background-color: aqua;
+background-color: white;
+box-shadow: 0px 1px 0px 0px black;
+
+
 
 
 
@@ -33,11 +37,14 @@ background-color: aqua;
 `
 
 
-const SearchBar=styled.input`
-height: 2.5rem;
-width: 40rem;
-border: 0.1px solid black;
-border-radius: 7rem;
-padding: 0px 20px ;
-`
+
+const SearchBar = styled.input`
+  height: 2.1rem;
+  width: 35em;
+  border: none;
+
+  border-radius: 6em;
+  padding: 0em 2em;
+  background-color: #d6d6d6;
+`;
 export default TopNavBar

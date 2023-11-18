@@ -9,11 +9,12 @@ const LoginPage = (props) => {
 
    async function userLoggin(){
     try {
-          const url = "https://cbuddy.onrender.com/api/auth/login";
+          const url = "http://localhost:10000/api/auth/login";
           const payload = { email, password };
           const res = await axios.post(url, payload);
           if (res.data) {
-            localStorage.setItem("token", res.data);
+            localStorage.setItem("token", res.data.token);
+            localStorage.setItem("user_id",res.data.user_id)
             props.setLoggedIn(true);
           }
 

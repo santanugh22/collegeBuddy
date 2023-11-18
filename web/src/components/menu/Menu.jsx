@@ -10,7 +10,7 @@ import { NavLink } from "react-router-dom";
 
 const Menu = () => {
   return (
-    <div style={{ position: "sticky", top: 0, left: 0 }}>
+
       <Container>
         <MenuHeader>
           <LogoImage src={CbuddyLogo} />
@@ -61,17 +61,20 @@ const Menu = () => {
           </LinkElement>
         </MenuWrapper>
       </Container>
-    </div>
+
   );
 };
 
 const Container = styled.div`
-  position: -webkit-sticky;
+  position: fixed;
   flex: 2;
-  position: sticky;
+
   top: 0;
   left: 0;
   height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  
 `;
 
 const MenuHeader = styled.div`
@@ -81,6 +84,7 @@ const MenuHeader = styled.div`
   width: 20rem;
   justify-content: center;
   align-items: center;
+  box-shadow: 0px 1px black;
 `;
 
 const MenuWrapper = styled.div`
@@ -95,8 +99,8 @@ const MenuWrapper = styled.div`
   overflow: hidden;
 `;
 const LogoImage = styled.img`
-  height: 5rem;
-  width: 9rem;
+  height: 3.5em;
+  width: 9em;
 `;
 
 const MenuButtons = styled.div`

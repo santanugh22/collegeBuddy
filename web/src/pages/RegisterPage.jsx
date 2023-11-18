@@ -27,7 +27,8 @@ const RegisterPage = (props) => {
           console.log(firstName,lastName,email,password)
           const res = await axios.post(url, payload);
           if(res.data){
-            localStorage.setItem("token",res.data)
+                 localStorage.setItem("token", res.data.token);
+                 localStorage.setItem("user_id", res.data.user_id);
               props.setLoggedIn(true);
           }else{
             return

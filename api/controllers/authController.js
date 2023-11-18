@@ -28,14 +28,17 @@ export const loginController = async (req, res) => {
       if (!final_check) {
         res.status(403).json("UserId or Password doesn't match");
       } else {
-        const jwtToken = await jwtGenerator(
+        const token = await jwtGenerator(
           user_id,
           email_from_db,
           first_name,
           last_name
         );
+        const resp={
+          user_id,token
+        }
 
-        res.status(200).json(jwtToken);
+        res.status(200).json(resp);
       }
     }
   } catch (error) {
@@ -63,15 +66,22 @@ export const registerController = async (req, res) => {
         [first_name, last_name, email, encrpytedPass]
       );
       const user_new = user.rows[0];
+      const user_id=user_new.user_id
 
-      const jwtToken = await jwtGenerator(
+
+      const token = await jwtGenerator(
         user_new.user_id,
         user_new.email,
         user_new.first_name,
         user_new.last_name
       );
+      const resp={
+        user_id,token
 
-      res.status(200).json(jwtToken);
+
+      }
+
+      res.status(200).json(resp);
     }
   } catch (error) {
     res.status(403).json(error);
@@ -102,17 +112,6 @@ export const updatePassword = async (req, res) => {
   } catch (error) {}
 };
 
-export const allUsers =
-  ("/",
-  async (req, res) => {
-    try {
-      const users = await pool.query(`SELECT * FROM users_basic`);
-
-      res.status(200).json(users.rows);
-    } catch (error) {
-      console.log(error);
-    }
-  });
 
 export const verifyToken = async (req, res) => {
   try {
@@ -134,3 +133,37 @@ export const verifyToken = async (req, res) => {
     res.status(501).json(error);
   }
 };
+export const getUserDetails=async(req,res)=>{
+
+  
+
+  try {
+
+     const { id:user_id } = req.params;
+     const {token}=req.body
+     const user = await jwtVerifier(token);
+
+     const user_details = await pool.query(
+       "SELECT user_id,email,profile_photo,first_name,last_name FROM users_basic WHERE user_id=$1",
+       [user_id]
+     );
+
+
+
+
+     const resp = user_details.rows[0];
+
+     if (!resp && !user) {
+       res.status(403).json("Some error has occured");
+     } else {
+       res.status(200).json(resp);
+     }
+    
+  } catch (error) {
+    res.status(510).json(error);
+    // console.log(req.body)
+    
+  }
+
+
+}
