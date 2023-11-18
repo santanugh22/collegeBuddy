@@ -1,11 +1,11 @@
 // import { Link } from "react-router-dom";
 import styled from "styled-components"
 
-const SideNav = ({loggedIn,setLoggedIn}) => {
+const SideNav = ({setLoggedIn}) => {
   return (
     <Container>
 
-        <button onClick={()=>setLoggedIn(!loggedIn)}>Settings</button>
+        <button onClick={()=>{setLoggedIn(false);localStorage.clear("token")}}>Logout</button>
 
     </Container>
   );

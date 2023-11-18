@@ -1,20 +1,76 @@
+import axios from 'axios'
+import { useState } from "react";
 import styled from "styled-components";
+import { TesturlRegister } from './constants';
+
+
 
 const RegisterPage = (props) => {
     document.title='CollegeBuddy | Register'
+
+
+    // lets make the register system
+    const [firstName,setFirstName]=useState('')
+    const [lastName,setLastName]=useState('')
+    const [email,setEmail]=useState('')
+    const [password,setPassword]=useState('')
+    async function RegisterUser(){
+    
+      try {
+          const url =  TesturlRegister;
+          const payload = {
+            first_name:firstName,
+            last_name:lastName,
+            email,
+            password,
+          };
+          console.log(firstName,lastName,email,password)
+          const res = await axios.post(url, payload);
+          if(res.data){
+            localStorage.setItem("token",res.data)
+              props.setLoggedIn(true);
+          }else{
+            return
+          }
+        
+      } catch (error) {
+        console.log(error)
+        
+      }
+
+    }
   return (
     <Container>
       <LoginHeaderText>Enter the Matrix !</LoginHeaderText>
       <LoginSecondaryHeader>
         Create an account to enjoy all the services free!
       </LoginSecondaryHeader>
-      <InputField placeholder="Email" />
-      <InputField placeholder="Password" />
-      <InputField placeholder="Verify Password" />
-      <LoginButton>Sign up</LoginButton>
+      <NameFieldContainer>
+        <NameInput
+          placeholder="First Name"
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+        <NameInput
+          placeholder="Last Name"
+          onChange={(e) => setLastName(e.target.value)}
+        />
+      </NameFieldContainer>
+
+      <InputField
+        placeholder="Email"
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <InputField
+        placeholder="Password"
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <InputField placeholder="Verify Password" type="password" />
+      <LoginButton onClick={()=>RegisterUser()}>Sign up</LoginButton>
       <ButtomText>
         Have an account ?{" "}
-        <SignupText onClick={() => props.setSelectedPage(1)}>Sign in</SignupText>
+        <SignupText onClick={() => {props.setSelectedPage(1) }}>
+          Sign in
+        </SignupText>
       </ButtomText>
     </Container>
   );
@@ -23,12 +79,12 @@ const RegisterPage = (props) => {
 export default RegisterPage;
 
 const Container = styled.div`
-  width: 455px;
-  height: 463px;
+  width: 30em;
+  height: 32em;
   flex-shrink: 0;
   border-radius: 32px;
   background: var(--Form-Bg, #f6fbf9);
-  margin: 96px 412px;
+  margin: 6em 32em;
   padding: 0px;
 `;
 
@@ -36,23 +92,23 @@ const LoginHeaderText = styled.p`
   color: var(--Heading, #212b27);
   text-align: center;
   font-family: Segoe UI;
-  font-size: 36px;
+  font-size: 2em;
   font-style: normal;
   font-weight: 700;
-  line-height: 46.8px; /* 130% */
-  margin: 30px 76px 0px 75px;
+  line-height: 2em; /* 130% */
+  margin: 0.2em 2em 0em 1em;
 `;
 
 const LoginSecondaryHeader = styled.p`
-  width: 308px;
+  width: 20em;
   color: var(--Paragraph, #32403b);
   text-align: center;
   font-family: Segoe UI;
-  font-size: 15px;
+  font-size: 1em;
   font-style: normal;
   font-weight: 400;
   line-height: 19.5px; /* 130% */
-  margin: 0px 74px 0px 73px;
+  margin: 0em 3em 1em 3em;
 `;
 
 const InputField = styled.input`
@@ -64,6 +120,7 @@ const InputField = styled.input`
   background: #fff;
   margin: 10px 41px 0px 39px;
   padding: 0px 0px 0px 12px;
+  font-size: 1em;
 `;
 
 const LoginButton = styled.button`
@@ -103,3 +160,26 @@ const SignupText = styled(ButtomText)`
   line-height: 18.2px;
   cursor: pointer;
 `;
+
+
+const NameFieldContainer = styled.div`
+  display: flex;
+  width: 375px;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+
+  margin-left: 2.5em;
+`;
+const NameInput=styled(InputField)`
+width:170px ;
+margin:0px;
+margin-left: 1em;
+
+
+
+
+
+`
+
+// const PasswordMatchError=styled.

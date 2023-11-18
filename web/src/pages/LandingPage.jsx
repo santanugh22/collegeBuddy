@@ -7,6 +7,7 @@ import RegisterPage from "./RegisterPage";
 import TeamWork from "/Invite_friends.svg";
 import Invite_Friends from '/Team_work.svg'
 
+
 const LandingPage = ({setLoggedIn}) => {
   const [selectedPage, setSelectedPage] = useState(0);
   return (
@@ -40,7 +41,10 @@ const LandingPage = ({setLoggedIn}) => {
             setLoggedIn={setLoggedIn}
           />
         ) : (
-          <RegisterPage setSelectedPage={setSelectedPage} />
+          <RegisterPage
+            setSelectedPage={setSelectedPage}
+            setLoggedIn={setLoggedIn}
+          />
         )}
       </HeroSection>
       <MiddleSection>

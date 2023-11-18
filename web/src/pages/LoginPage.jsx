@@ -1,15 +1,42 @@
+import axios from 'axios'
+import { useState } from 'react';
 import styled from "styled-components";
+import { TesturlLogin } from './constants';
 const LoginPage = (props) => {
    document.title = "CollegeBuddy | Login";
+   const [email,setEmail]=useState('')
+   const [password,setPassword]=useState('')
+
+   async function userLoggin(){
+    try {
+          const url = TesturlLogin;
+          const payload = { email, password };
+          const res = await axios.post(url, payload);
+          if (res.data) {
+            localStorage.setItem("token", res.data);
+            props.setLoggedIn(true);
+          }
+
+      
+    } catch (error) {
+      console.log(error)
+      
+    }
+
+
+   }
+
+
+
   return (
     <Container>
       <LoginHeaderText>Enter the Matrix !</LoginHeaderText>
       <LoginSecondaryHeader>
         Create an account to enjoy all the services free!
       </LoginSecondaryHeader>
-      <InputField placeholder="Email" />
-      <InputField placeholder="Password" />
-      <LoginButton onClick={()=>props.setLoggedIn(true)}>Sign in</LoginButton>
+      <InputField placeholder="Email" onChange={(e)=>setEmail(e.currentTarget.value)}/>
+      <InputField placeholder="Password" onChange={(e)=>setPassword(e.target.value)}/>
+      <LoginButton onClick={()=>userLoggin()}>Sign in</LoginButton>
       <ButtomText>
         Don`t have an account ? <SignupText onClick={()=>{props.setSelectedPage(2)
        

@@ -1,5 +1,5 @@
 import pool from "../db/Connection.js";
-import bcrypt from "bcrypt";
+import bcrypt, { hash } from "bcrypt";
 import { jwtGenerator, jwtVerifier } from "../utils/jwtGenerator.js";
 
 export const loginController = async (req, res) => {
@@ -7,26 +7,39 @@ export const loginController = async (req, res) => {
     const { email, password } = req.body;
 
     // lets check if the user exist or not in the table
-    const user = await pool.query(
-      `SELECT * FROM users_basic WHERE email=$1 AND password=$2`,
-      [email, password]
-    );
-    if (user.rows[0].length==0) {
+    const user = await pool.query(`SELECT * FROM users_basic WHERE email=$1`, [
+      email,
+    ]);
+  
+
+
+    if (!user.rows[0]) {
       res.status(403).json("User doesn't exist");
     } else {
-      const user_new = user.rows[0];
+        const {
+          user_id,
+          password: password_from_db,
+          email: email_from_db,
+          first_name,
+          last_name,
+        } = user.rows[0];
+      const final_check = await bcrypt.compare(password, password_from_db);
 
-      const jwtToken = await jwtGenerator(
-        user_new.user_id,
-        user_new.email,
-        user_new.first_name,
-        user_new.last_name
-      );
+      if (!final_check) {
+        res.status(403).json("UserId or Password doesn't match");
+      } else {
+        const jwtToken = await jwtGenerator(
+          user_id,
+          email_from_db,
+          first_name,
+          last_name
+        );
 
-      res.status(200).json(jwtToken);
+        res.status(200).json(jwtToken);
+      }
     }
   } catch (error) {
-    res.status(error.status).json(error);
+    res.status(501).json(error);
   }
 };
 
@@ -42,9 +55,12 @@ export const registerController = async (req, res) => {
     if (userCheck.rows[0]) {
       res.status(200).json("User already exists");
     } else {
+      // lets encrypt the password
+      const salt = await bcrypt.genSalt(5);
+      const encrpytedPass = await bcrypt.hash(password, salt);
       const user = await pool.query(
         "INSERT INTO users_basic (first_name,last_name,email,password) Values ($1,$2,$3,$4)RETURNING *",
-        [first_name, last_name, email, password]
+        [first_name, last_name, email, encrpytedPass]
       );
       const user_new = user.rows[0];
 
@@ -97,3 +113,24 @@ export const allUsers =
       console.log(error);
     }
   });
+
+export const verifyToken = async (req, res) => {
+  try {
+    const { token } = req.body;
+    const user = await jwtVerifier(token);
+    const { user_id, user_email } = user;
+    const verify_user = await pool.query(
+      "SELECT user_id FROM users_basic WHERE email=$1 and user_id=$2",
+      [user_email, user_id]
+    );
+
+    const resp = verify_user.rows[0];
+    if (!resp) {
+      res.status(403).json(user);
+    } else {
+      res.status(200).json(true);
+    }
+  } catch (error) {
+    res.status(501).json(error);
+  }
+};
