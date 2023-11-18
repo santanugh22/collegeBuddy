@@ -23,11 +23,9 @@ const LandingPage = ({setLoggedIn}) => {
       <HeroSection>
         {selectedPage == 0 ? (
           <InitialContainer>
-            <HeroMainText>Lorem Ipsum Dolors !</HeroMainText>
+            <HeroMainText>Why not enter the Matrix ?</HeroMainText>
             <HeroSecondaryText>
-              Lorem ipsum dolor sit amet consectetur. Vel phasellus quisque ac
-              mi donec arcu. Ultricies ullamcorper mauris tristique mauris ut
-              morbi egestas.
+             A matrix where you can communicate , learn and make your life easy and efficient !
             </HeroSecondaryText>
 
             <LoginRegisterButton onClick={() => setSelectedPage(1)}>
@@ -149,12 +147,16 @@ const Navbar = styled.div`
   height: 100%;
   width: 100%;
   align-items: center;
-  max-width: 1024px;
+  max-width: 50em;
 `;
 const LogoContainer = styled.img`
-  height: 46px;
-  width: 149px;
-  margin-left: -20px;
+  height: 3em;
+  width: 8em;
+  margin-left: -2em;
+  @media (max-width:729px ){
+    margin-left:1em ;
+    
+  }
 `;
 const GuideBook = styled.div`
   height: 70px;
@@ -248,7 +250,7 @@ const MiddleSectionTextContainer = styled.div`
 
 const BottomSection = styled.div`
   width: 100%;
-  height: 665px;
+  height: 35em;
   background: #f6f6f6;
   display: flex;
   @media (max-width: 729px) {

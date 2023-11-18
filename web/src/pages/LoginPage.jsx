@@ -58,6 +58,7 @@ const Container = styled.div`
   margin: 96px 412px;
   display: flex;
   flex-direction: column;
+
   @media (max-width: 729px) {
     width: 90%;
     
@@ -119,6 +120,7 @@ const LoginButton = styled.button`
   font-weight: 700;
   line-height: 28.6px; /* 130% */
   margin: 5% 25%;
+  align-self: center;
   cursor: pointer;
   &:hover{
     background-color: #999ff4;
