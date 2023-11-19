@@ -4,7 +4,7 @@ import postRoutes from './routes/postRoutes.js'
 import profileRoutes from './routes/profileRoutes.js'
 import cors from "cors";
 import dotenv from "dotenv";
-import { readdir } from "fs/promises";
+
 dotenv.config();
 import path from "path";
 import { fileURLToPath } from "url";
