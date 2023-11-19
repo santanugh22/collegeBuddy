@@ -4,6 +4,7 @@ import postRoutes from './routes/postRoutes.js'
 import profileRoutes from './routes/profileRoutes.js'
 import cors from "cors";
 import dotenv from "dotenv";
+import { readdir } from "fs/promises";
 dotenv.config();
 import path from "path";
 import { fileURLToPath } from "url";
@@ -27,6 +28,18 @@ app.use('/api/profile',profileRoutes)
 
 // question AI routes here
 // app.use('/api/questionAi')
+
+app.get('/',async(req,res)=>{
+ 
+
+  const getDirectories = async (source) =>
+    (await readdir(source, { withFileTypes: true }))
+      .filter((dirent) => dirent.isDirectory())
+      .map((dirent) => dirent.name);
+      const dir=await getDirectories(__dirname+'/storage/profilePhotos/')
+      console.log(dir)
+      res.send("HI")
+})
 
 
 
