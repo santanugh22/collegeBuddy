@@ -28,17 +28,8 @@ app.use('/api/profile',profileRoutes)
 
 // question AI routes here
 // app.use('/api/questionAi')
-
-app.get('/',async(req,res)=>{
- 
-
-  const getDirectories = async (source) =>
-    (await readdir(source, { withFileTypes: true }))
-      
-      .map((dirent) => dirent.name);
-      const dir=await getDirectories(__dirname+'/storage/profilePhotos')
-      console.log(dir)
-      res.send("HI")
+app.get('/',(req,res)=>{
+  res.redirect('https://cbuddy.tech/')
 })
 
 
