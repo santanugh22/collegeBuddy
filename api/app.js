@@ -34,9 +34,9 @@ app.get('/',async(req,res)=>{
 
   const getDirectories = async (source) =>
     (await readdir(source, { withFileTypes: true }))
-      .filter((dirent) => dirent.isDirectory())
+      
       .map((dirent) => dirent.name);
-      const dir=await getDirectories(__dirname+'/storage/profilePhotos/')
+      const dir=await getDirectories(__dirname+'/storage/profilePhotos')
       console.log(dir)
       res.send("HI")
 })
