@@ -19,4 +19,7 @@ async function jwtVerifier(token){
 
 }
 
+
+// here will come the refresh token sending capability
+
 export {jwtGenerator,jwtVerifier}

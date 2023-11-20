@@ -1,7 +1,10 @@
 import express from "express";
 import authRoutes from "./routes/authRoutes.js";
-import postRoutes from './routes/postRoutes.js'
-import profileRoutes from './routes/profileRoutes.js'
+import postRoutes from "./routes/postRoutes.js";
+import profileRoutes from "./routes/profileRoutes.js";
+import classroomRoutes from "./routes/classroomRoutes.js";
+import studentzoneRoutes from "./routes/studentzoneRoutes.js";
+import todolistRoutes from "./routes/todolistRoutes.js";
 import cors from "cors";
 import dotenv from "dotenv";
 
@@ -10,31 +13,33 @@ import path from "path";
 import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
-const PORT = process.env.PORT||3000;
+const PORT = process.env.PORT || 3000;
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
-
 // auth routes here
 app.use("/api/auth", authRoutes);
 
 // post routes here
-app.use('/api/posts',postRoutes)
+app.use("/api/posts", postRoutes);
 
 // profile routes of the app
-app.use('/api/profile',profileRoutes)
+app.use("/api/profile", profileRoutes);
 
 // question AI routes here
-// app.use('/api/questionAi')
-app.get('/',(req,res)=>{
-  res.redirect('https://cbuddy.tech/')
-})
+app.use("/api/studentzone", studentzoneRoutes);
 
+// classroom API routes
+app.use("/api/classroomRoutes", classroomRoutes);
 
+//todolist API routes
+app.use("/api/todolist", todolistRoutes);
 
-
+app.get("/", (req, res) => {
+  res.redirect("https://cbuddy.tech/");
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
